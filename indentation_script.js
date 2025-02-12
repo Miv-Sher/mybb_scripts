@@ -30,7 +30,7 @@
                 isIndentationOpen = true
             }
             
-            if (isIndentationOpen) {
+            if (isIndentationOpen && !$this.html().includes(tag_start)) {
                 $this.html(indent + $this.html());
                 $this.html($this.html().replace(/<br>/gm, indent_with_br));
              }
