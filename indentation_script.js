@@ -8,6 +8,7 @@
     var tag_close = '[/indentation]';
     var empty = ''
     var indent = '<span style="display:inline-block;margin:0em 1em;"></span>';
+    var indent_with_br = '<br><span style="display:inline-block;margin:0em 1em;"></span>';
     var isIndentationOpen = false
 
 
@@ -31,6 +32,7 @@
             
             if (isIndentationOpen) {
                 $this.html(indent + $this.html());
+                $this.html($this.html().replace(/<br>/gm, indent_with_br));
              }
           
             if ($this.html().includes(tag_close)) {
