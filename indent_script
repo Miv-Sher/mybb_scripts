@@ -1,0 +1,20 @@
+<script type="text/javascript">
+(function () {
+		var b = '[indent]';
+		var indent = '<span style="display: inline-block; margin-left: 2.2em;"></span>';
+
+		$("#button-strike").after('<td id="button-indent" title="Отступы"><img src="/i/blank.gif" onclick="smile(\'' + b + '\')"></td>');
+
+		function applyIndent() {
+			$('.post-content p').each(function () {
+				var $this = $(this);
+				if ($this.text().includes(b)) {
+					$this.html($this.html().replace(/\[indent\]/gm, indent));
+				}
+			});
+		}
+
+		$(document).on('pun_post pun_edit pun_preview', applyIndent);
+		applyIndent();
+}());
+</script>
