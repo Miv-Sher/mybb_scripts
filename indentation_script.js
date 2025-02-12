@@ -1,0 +1,48 @@
+<!--ТЕГ  абзацев одиночных и на весь пост - [indent] и [indentation] -->
+<style>#button-indent {background:url(http://s7.uploads.ru/t/mnkgq.png)no-repeat center 6px!important;}</style>
+<style>#button-indentation {background:url(http://s7.uploads.ru/t/mnkgq.png)no-repeat center 6px!important;}</style>
+<script type="text/javascript">
+(function() {
+    var b = '[indent]';
+    var tag_start = '[indentation]';
+    var tag_close = '[/indentation]';
+    var empty = ''
+    var indent = '<span style="display:inline-block;margin:0em 1em;"></span>';
+    var isIndentationOpen = false
+
+
+    $("#button-strike").after('<td id="button-indent" title="Отступы"><img src="/i/blank.gif" onclick="smile(\'' + b + '\')"></td>');
+
+    $("#button-indent").after('<td id="button-indentation" title="Отступы на весь пост"><img src="/i/blank.gif" onclick="bbcode(\'' + tag_start + '\',\'' + tag_close + '\')"></td>');
+
+    function applyIndent() {
+        $('.post-content p').each(function() {
+            var $this = $(this);
+            //обработаем одиночные intent
+            if ($this.text().includes(b)) {
+                $this.html($this.html().replace(/\[indent\]/gm, indent));
+            }
+            //обработаем тег indentation
+             if ($this.html().includes(tag_start)) {
+                $this.html($this.html().replace(/\[indentation\]/gm, empty));
+               $this.html($this.html().replace(/\&nbsp/gm, empty));
+                isIndentationOpen = true
+            }
+            
+            if (isIndentationOpen) {
+                $this.html(indent + $this.html());
+             }
+          
+            if ($this.html().includes(tag_close)) {
+               $this.html($this.html().replace(/\[\/indentation\]/gm, empty));
+               isIndentationOpen = false
+            }
+
+        });
+    }
+
+    $(document).on('pun_mainReady ajaxComplete', applyIndent);
+
+    applyIndent();
+}());
+</script>
