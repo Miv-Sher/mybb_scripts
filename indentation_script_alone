@@ -1,4 +1,4 @@
-<!--ТЕГ  абзацев одиночных и на весь пост - [indent] и [indentation] -->
+<!--ТЕГ  абзацев между тегами - [indentation] -->
 <style>#button-indent {background:url(http://s7.uploads.ru/t/mnkgq.png)no-repeat center 6px!important;}</style>
 <style>#button-indentation {background:url(http://s7.uploads.ru/t/mnkgq.png)no-repeat center 6px!important;}</style>
 <script type="text/javascript">
